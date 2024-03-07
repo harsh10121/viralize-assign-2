@@ -59,6 +59,12 @@ function App() {
 	const min = Math.floor((time%360000)/6000);
 	const hr = Math.floor((time/360000));
 
+	function handleStart(){
+		setIsStarted(function(prev){
+			if(prev===false)return true;
+			else return false;
+		});
+	}
 
 	function handleReset(){
 		setTime(0);
@@ -96,6 +102,13 @@ function App() {
 			};
 			const response = await axios.post("http://localhost:3000/laps",dbobj);
 		}
+	}
+
+	function handleDisplay(){
+		setShowLaps(function(val){
+			if(val===false)return true;
+			else return false;
+		});
 	}
 
     return (
